@@ -100,7 +100,7 @@
         <div id="liveView" class="videoView">
             <button id="webcamButton">Enable Webcam</button>
             <span id="fps"></span> fps
-            <video id="webcam" autoplay></video>
+            <video id="webcam" style="max-width: 100%;" autoplay></video>
         </div>
     </section>
 
@@ -178,7 +178,10 @@
 
             // getUsermedia parameters.
             const constraints = {
-                video: { facingMode: "environment" }
+                video: {
+                    facingMode: "environment",
+                    width: 1280, height: 720,
+                }
             };
 
             // Activate the webcam stream.
@@ -196,6 +199,8 @@
 
         // Prediction loop!
         function predictWebcam() {
+            const scale = liveView.clientWidth / 1280.0;
+
             // Now let's start classifying the stream.
             model.detect(video).then(function (predictions) {
                 frame++;
@@ -216,17 +221,17 @@
                             + Math.round(parseFloat(predictions[n].score) * 100)
                             + '% confidence.';
                         // Draw in top left of bounding box outline.
-                        p.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
-                            'top: ' + predictions[n].bbox[1] + 'px;' +
-                            'width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+                        p.style = 'left: ' + predictions[n].bbox[0] * scale + 'px;' +
+                            'top: ' + predictions[n].bbox[1] * scale + 'px;' +
+                            'width: ' + (predictions[n].bbox[2] * scale - 10) + 'px;';
 
                         // Draw the actual bounding box.
                         const highlighter = document.createElement('div');
                         highlighter.setAttribute('class', 'highlighter');
-                        highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-                            + predictions[n].bbox[1] + 'px; width: '
-                            + predictions[n].bbox[2] + 'px; height: '
-                            + predictions[n].bbox[3] + 'px;';
+                        highlighter.style = 'left: ' + predictions[n].bbox[0] * scale + 'px;'
+                            + 'top: ' + predictions[n].bbox[1] * scale + 'px;'
+                            + 'width: '+ predictions[n].bbox[2] * scale + 'px;'
+                            + 'height: ' + predictions[n].bbox[3] * scale + 'px;';
 
                         liveView.appendChild(highlighter);
                         liveView.appendChild(p);
