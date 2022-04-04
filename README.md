@@ -10,6 +10,7 @@ To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
 | iPhone 13 (Safari) | 20 |
 | iPhone 12 64 GB (iOS 15.1, Safari) | 12 - 14 |
 | iPhone 12 64 GB (iOS 15.1, Chrome) | 12 - 14 |
+| iPhone 12 Pro Max | 12 - 14 |
 | iPhone 11 (iOS 15.4.1, Safari) | 15 - 18 |
 | iPhone 6S (Safari) | 5 |
 | iPad Mini 6 (Safari) | 14 |
