@@ -152,7 +152,6 @@
         ********************************************************************/
 
         const video = document.getElementById('webcam');
-        const scale = video.clientWidth / 1280.0;
         const liveView = document.getElementById('liveView');
 
         // Check if webcam access is supported.
@@ -210,7 +209,8 @@
 
         // Prediction loop!
         function predictWebcam() {
-            console.debug(video);
+            // console.debug(video);
+            const scale = video.clientWidth / 1280.0;
 
             // Now let's start classifying the stream.
             model.detect(video).then(function (predictions) {
