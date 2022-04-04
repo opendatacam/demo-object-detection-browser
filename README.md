@@ -15,6 +15,7 @@ To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
 | iPhone 11 (iOS 15.4.1, Safari) | 15 - 18 | === |
 | iPad Mini 6 (Safari) | 14 | === |
 | iPad Pro 10.5" (iOS 15.4.1, Safari) | 9 | == |
+| Xiaomi Mi 8 | 5 - 7 | == |
 | iPhone 6S (Safari) | 5 | = |
 | | | &nbsp; |
 | MacBook Pro 14 M1 Pro (Chrome) | 60 | ============ |
