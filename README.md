@@ -5,7 +5,7 @@ To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
 
 ## Bechmark Results
 
-| Device | Average FPS | Poor Chart™️ (= ~ 5fps) |
+| Device | Average FPS | Poor Chart™️ <br> (= ~ 5 fps) |
 |----|----|----|
 | iPhone 13 (Safari) | 20 | ==== |
 | Samsung Galaxy S21 (Chrome) | 14 - 18 | ==== |
@@ -13,12 +13,13 @@ To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
 | iPhone 12 64 GB (iOS 15.1, Chrome) | 12 - 14 | === |
 | iPhone 12 Pro Max | 12 - 14 | === |
 | iPhone 11 (iOS 15.4.1, Safari) | 15 - 18 | === |
-| iPhone 6S (Safari) | 5 | = |
 | iPad Mini 6 (Safari) | 14 | === |
 | iPad Pro 10.5" (iOS 15.4.1, Safari) | 9 | == |
+| iPhone 6S (Safari) | 5 | = |
+| | | &nbsp; |
 | MacBook Pro 14 M1 Pro (Chrome) | 60 | ============ |
-| MacBook Pro 14 M1 Pro (Safari) | 30 | ====== |
 | MacBook Pro 13 M1 (Chrome) | 40 | ======== |
+| MacBook Pro 14 M1 Pro (Safari) | 30 | ====== |
 | MacBook Pro 13 M1 (Safari) | 14 - 20 | ==== |
 | MacBook Pro 13 (2018, 2.7 GHz i7, Intel Iris Plus Graphics 655 1536 MB, Firefox) | 18 - 20 | ==== |
 
