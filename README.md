@@ -36,3 +36,4 @@ Please feel free to run the demo on your devices and upload your results to GitH
 
 - https://www.tensorflow.org/js
 - https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd
+- https://github.com/nihui/ncnn-webassembly-nanodet/ another benchmark running ncnn on Web Assembly
