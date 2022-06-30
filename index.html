@@ -109,9 +109,11 @@
     </section>
     <section id="demos" class="invisible">
         <div id="liveView" class="videoView">
+            Upload Image <input type="file" id="imageUploadButton" accept="image/*">, or
             <button id="webcamButton">Enable Webcam</button>
-            <span id="fps"></span> fps
+            <span id="fps"></span> fps (reload page to switch modes)
             <video id="webcam" style="max-width: 100%;" autoplay playsinline></video>
+            <img style="display:block" id="image">
         </div>
     </section>
 
@@ -163,14 +165,74 @@
             document.getElementById('loading').style = 'display: none;';
         });
 
+        const video = document.getElementById('webcam');
+        const liveView = document.getElementById('liveView');
+        const image = document.getElementById('image');
+        const imageUploadButton = document.getElementById('imageUploadButton');
+        const enableWebcamButton = document.getElementById('webcamButton');
+
+        /*********
+         * Demo 1 File Upload
+         *********/
+        imageUploadButton.addEventListener('change', () => {
+            const curFiles = imageUploadButton.files;
+            if(curFiles.length === 0) {
+                return;
+            }
+
+            video.style = 'display:none;'
+            enableWebcamButton.disabled = true;
+
+            // image.src = curFiles[0];
+            image.src = URL.createObjectURL(curFiles[0]);
+            image.addEventListener('load', () => {
+                model.detect(image).then(function (predictions) {
+                const scale = image.clientWidth / image.width;
+
+                for (let i = 0; i < children.length; i++) {
+                    liveView.removeChild(children[i]);
+                }
+                children.splice(0);
+
+                // Now lets loop through predictions and draw them to the live view if
+                // they have a high confidence score.
+                for (let n = 0; n < predictions.length; n++) {
+                    // If we are over 66% sure we are sure we classified it right, draw it!
+                    if (predictions[n].score > 0.66) {
+                        const p = document.createElement('p');
+                        p.innerText = predictions[n].class + ' - with '
+                            + Math.round(parseFloat(predictions[n].score) * 100)
+                            + '% confidence.';
+                        // Draw in top left of bounding box outline.
+                        p.style = 'left: ' + predictions[n].bbox[0] * scale + 'px;' +
+                            'top: ' + predictions[n].bbox[1] * scale + 'px;' +
+                            'width: ' + (predictions[n].bbox[2] * scale - 10) + 'px;';
+
+                        // Draw the actual bounding box.
+                        const highlighter = document.createElement('div');
+                        highlighter.setAttribute('class', 'highlighter');
+                        highlighter.style = 'left: ' + predictions[n].bbox[0] * scale + 'px;'
+                            + 'top: ' + predictions[n].bbox[1] * scale + 'px;'
+                            + 'width: ' + predictions[n].bbox[2] * scale + 'px;'
+                            + 'height: ' + predictions[n].bbox[3] * scale + 'px;';
+
+                        liveView.appendChild(highlighter);
+                        liveView.appendChild(p);
+
+                        // Store drawn objects in memory so we can delete them next time around.
+                        children.push(highlighter);
+                        children.push(p);
+                    }
+                }
+            });
+            });
+        });
+
         /********************************************************************
         // Demo 2: Continuously grab image from webcam stream and classify it.
         // Note: You must access the demo on https for this to work:
         // https://tensorflow-js-image-classification.glitch.me/
         ********************************************************************/
-
-        const video = document.getElementById('webcam');
-        const liveView = document.getElementById('liveView');
 
         // Check if webcam access is supported.
         function hasGetUserMedia() {
@@ -186,7 +248,6 @@
         // If webcam supported, add event listener to button for when user
         // wants to activate it.
         if (hasGetUserMedia()) {
-            const enableWebcamButton = document.getElementById('webcamButton');
             enableWebcamButton.addEventListener('click', enableCam);
         } else {
             console.warn('getUserMedia() is not supported by your browser');
@@ -202,6 +263,8 @@
 
             // Hide the button.
             // event.target.classList.add('removed');
+            image.style = 'display:none;'
+            imageUploadButton.disabled = true;
 
             // getUsermedia parameters.
             const constraints = {
