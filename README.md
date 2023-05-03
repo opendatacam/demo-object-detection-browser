@@ -1,7 +1,7 @@
 # Object Detection with TensorFlow.js Benchmark
 
 This is a small benchmark to see how fast the [coco-ssd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) runs on TensorFlow.js in the browser.
-To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
+To run the benchmark visit https://opendatacam-pro.github.io/poc-tfjs-demo/.
 
 ## Bechmark Results
 
@@ -28,7 +28,7 @@ To run the benchmark visit https://nonocam.github.io/poc-tfjs-demo/.
 
 ## Contribute
 
-Please feel free to run the demo on your devices and upload your results to GitHub (via PR or as Issues) or send me a message via Twitter: https://twitter.com/_vsaw
+Please feel free to run the demo on your devices and upload your results to GitHub (via PR or as Issues) or send me a message via Mastodon: https://mastodon.social/@vsaw
 
 ## Known Issues
 
