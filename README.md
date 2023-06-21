@@ -1,7 +1,7 @@
 # Object Detection in the Browser
 
 This is a small benchmark to see how fast the [coco-ssd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) runs on TensorFlow.js in the browser.
-To run the benchmark visit https://opendatacam.github.io/prototype-object-detection-in-the-browser/.
+To run the benchmark visit https://opendatacam.github.io/demo-object-detection-browser/.
 
 ## Bechmark Results
 
