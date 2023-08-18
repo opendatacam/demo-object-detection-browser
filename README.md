@@ -17,6 +17,7 @@ To run the benchmark visit https://opendatacam.github.io/demo-object-detection-b
 | Pixel 4 | 11 | === |
 | iPad Pro 10.5" (iOS 15.4.1, Safari) | 9 | == |
 | Xiaomi Mi 8 | 5 - 7 | == |
+| Google Pixel 6a (Android 13, Chrome) | 5 | = |
 | iPhone 6S (Safari) | 5 | = |
 | Samsung Galaxy Tab A T510 | 2 - 4 | |
 | | | &nbsp; |
